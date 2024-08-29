@@ -1,21 +1,21 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Product } from "./product.entity";
+import { Product } from './';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+
+@Entity({ name: 'product_images' })
 export class ProductImage {
 
-  @PrimaryGeneratedColumn()
-  id: number;
-  @Column('text')
-  url: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-  @ManyToOne(
-    () => Product,
-    product => product.images,
-    { onDelete: 'CASCADE' }
+    @Column('text')
+    url: string;
 
-
-  )
-  product: Product
+    @ManyToOne(
+        () => Product,
+        ( product ) => product.images,
+        {  onDelete: 'CASCADE' }
+    )
+    product: Product
 
 }
